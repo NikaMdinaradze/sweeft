@@ -26,6 +26,10 @@ You have two options to interact with the API:
      ```
      git clone https://github.com/NikaMdinaradze/sweeft.git
      ```
+   - Change working directory:
+     ```
+     cd sweeft
+     ```
    - Install the required dependencies:
      ```
      pip install -r requirements.txt
@@ -49,13 +53,13 @@ You can also retrieve information about registered users by sending a GET reques
 
 ### Registration and Authentication
 
-To get started offering and requesting books, first, register by sending a POST request to [`http://34.207.238.175/users/`](http://34.207.238.175/users/). Provide your username, email, and password. Your registration must meet specific requirements: the username must be unique, the email should be valid, and the password must contain at least one number and one uppercase letter.
+To get started offering and requesting books, first, register by sending a POST request to [`http://34.207.238.175/users/`](http://34.207.238.175/users/). Provide your username, email, password and profile (photo). Your registration must meet specific requirements: the username must be unique, the email should be valid, and the password must contain at least one number and one uppercase letter.
 
 After registration, log in using a POST request to [`http://34.207.238.175/users/login`](http://34.207.238.175/users/login) with your username and password. Upon successful login, you will receive a JWT bearer token, allowing you to access your user information via a GET request to [`http://34.207.238.175/users/me`](http://34.207.238.175/users/me) with the provided token.
 
 ### Offering and Requesting Books
 
-Now, you can offer books to others by sending a POST request to [`http://34.207.238.175/books/`](http://34.207.238.175/books/). Provide book details such as title, author, genre, description, location, and condition. You can also update a book's condition using a PATCH request to [`http://34.207.238.175/books/`](http://34.207.238.175/books/).
+Now, you can offer books to others by sending a POST request to [`http://34.207.238.175/books/`](http://34.207.238.175/books/). Provide book details such as title, author, genre, description, location, condition and photo. You can also update a book's condition using a PATCH request to [`http://34.207.238.175/books/`](http://34.207.238.175/books/).
 
 If someone requests your book, you can view the requests for that book by sending a GET request to [`http://34.207.238.175/books/`](http://34.207.238.175/books/) with the book ID as a query parameter. You can then choose which request to approve by sending a PATCH request to [`http://34.207.238.175/request/`](http://34.207.238.175/request/) with `approved_status=true`. After giving away the book, delete it with a DELETE request to [`http://34.207.238.175/books/`](http://34.207.238.175/books/) (provide the book ID), and all related requests will be automatically deleted.
 
